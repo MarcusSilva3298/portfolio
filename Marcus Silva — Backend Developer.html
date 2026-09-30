@@ -1,0 +1,493 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>
+      Marcus Silva — Backend Developer | Node.js, TypeScript, RabbitMQ
+    </title>
+    <meta
+      name="description"
+      content="Marcus Silva is a backend developer with 5+ years building Node.js and TypeScript systems — microservices, message queues with RabbitMQ, and backend architecture for healthcare and oil & gas companies."
+    />
+    <meta property="og:title" content="Marcus Silva — Backend Developer" />
+    <meta
+      property="og:description"
+      content="Backend developer specializing in Node.js, TypeScript, and message-queue architecture (RabbitMQ). Selected work in healthcare and oil & gas."
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://claude.ai/artifact/7jp5LZHBF3dHvEhFBi8zmT"
+    />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Marcus Silva",
+        "jobTitle": "Backend Developer",
+        "url": "https://claude.ai/artifact/7jp5LZHBF3dHvEhFBi8zmT",
+        "sameAs": [
+          "https://www.linkedin.com/in/marcus-slv/",
+          "https://github.com/MarcusSilva3298"
+        ],
+        "knowsAbout": [
+          "Node.js",
+          "TypeScript",
+          "NestJS",
+          "RabbitMQ",
+          "Microservices Architecture",
+          "PostgreSQL",
+          "Docker"
+        ]
+      }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@500;600&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #f6f5f1;
+        --surface: #ffffff;
+        --text: #1b2430;
+        --text-dim: #5c6b7a;
+        --accent: #2b5fa8;
+        --rule: #d8dee6;
+        padding-top: env(safe-area-inset-top, 0px);
+        padding-bottom: env(safe-area-inset-bottom, 0px);
+      }
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]) {
+          --bg: #13161c;
+          --surface: #1a1e26;
+          --text: #e8e9ec;
+          --text-dim: #8992a0;
+          --accent: #6e9fdb;
+          --rule: #2c3340;
+        }
+      }
+      :root[data-theme="dark"] {
+        --bg: #13161c;
+        --surface: #1a1e26;
+        --text: #e8e9ec;
+        --text-dim: #8992a0;
+        --accent: #6e9fdb;
+        --rule: #2c3340;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-padding-top: env(safe-area-inset-top, 0px);
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family:
+          "Inter",
+          -apple-system,
+          "Segoe UI",
+          sans-serif;
+        font-size: 17px;
+        line-height: 1.6;
+        background-image:
+          linear-gradient(var(--rule) 1px, transparent 1px),
+          linear-gradient(90deg, var(--rule) 1px, transparent 1px);
+        background-size: 28px 28px;
+        background-attachment: fixed;
+        background-position: center top;
+        opacity: 1;
+      }
+      .wrap {
+        max-width: 700px;
+        margin: 0 auto;
+        padding: 72px 24px 100px;
+        background: var(--bg);
+      }
+      h1,
+      h2,
+      h3 {
+        font-family: "Source Serif 4", Georgia, serif;
+      }
+      a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+
+      header.hero {
+        margin-bottom: 76px;
+      }
+      .hero h1 {
+        font-size: clamp(2.1rem, 5vw, 2.7rem);
+        margin: 0 0 6px;
+        font-weight: 600;
+      }
+      .hero .role {
+        color: var(--accent);
+        font-size: 1rem;
+        font-weight: 500;
+        margin: 0 0 26px;
+      }
+      .hero p.lede {
+        max-width: 54ch;
+        color: var(--text-dim);
+        font-size: 1.1rem;
+        margin: 0 0 30px;
+      }
+      .hero-diagram {
+        margin: 4px 0 34px;
+      }
+      .cta-row {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+      .btn {
+        font-family: "Inter", sans-serif;
+        font-weight: 500;
+        font-size: 0.92rem;
+        padding: 10px 20px;
+        border: 1.4px solid var(--accent);
+        border-radius: 2px;
+        color: var(--accent);
+      }
+      .btn:hover {
+        background: var(--accent);
+        color: var(--surface);
+        text-decoration: none;
+      }
+      .btn.primary {
+        background: var(--accent);
+        color: var(--surface);
+      }
+      .btn.primary:hover {
+        opacity: 0.85;
+      }
+
+      section {
+        margin-bottom: 60px;
+      }
+      h2 {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin: 0 0 22px;
+      }
+      section.about p {
+        color: var(--text-dim);
+        max-width: 62ch;
+      }
+
+      .case {
+        padding: 24px 0 24px 20px;
+        border-left: 2px solid var(--rule);
+        margin-bottom: 4px;
+      }
+      .case h3 {
+        font-size: 1.15rem;
+        margin: 0 0 4px;
+        font-weight: 600;
+      }
+      .case .meta {
+        font-size: 0.86rem;
+        color: var(--accent);
+        margin: 0 0 12px;
+        font-weight: 500;
+      }
+      .case p {
+        margin: 0 0 14px;
+        max-width: 60ch;
+        color: var(--text);
+      }
+      .tags {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .tag {
+        font-size: 0.78rem;
+        color: var(--text-dim);
+        border: 1px solid var(--rule);
+        border-radius: 2px;
+        padding: 3px 9px;
+      }
+
+      .avail ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px 24px;
+      }
+      .avail li {
+        color: var(--text-dim);
+        padding-left: 18px;
+        position: relative;
+      }
+      .avail li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.6em;
+        width: 8px;
+        height: 8px;
+        border: 1.5px solid var(--accent);
+      }
+      @media (max-width: 520px) {
+        .avail ul {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .stack-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      footer {
+        border-top: 1px solid var(--rule);
+        padding-top: 28px;
+        color: var(--text-dim);
+        font-size: 0.95rem;
+      }
+      footer .line {
+        margin-bottom: 6px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="hero">
+        <h1>Marcus Silva</h1>
+        <p class="role">
+          Backend Engineer — Node.js · TypeScript · Distributed Systems
+        </p>
+        <!-- <svg
+          class="hero-diagram"
+          width="220"
+          height="48"
+          viewBox="0 0 220 48"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect
+            x="2"
+            y="16"
+            width="52"
+            height="16"
+            fill="none"
+            stroke="var(--accent)"
+            stroke-width="1.6"
+          />
+          <line
+            x1="54"
+            y1="24"
+            x2="84"
+            y2="24"
+            stroke="var(--accent)"
+            stroke-width="1.2"
+            stroke-dasharray="3 3"
+          />
+          <rect
+            x="84"
+            y="4"
+            width="52"
+            height="16"
+            fill="none"
+            stroke="var(--text-dim)"
+            stroke-width="1.2"
+          />
+          <rect
+            x="84"
+            y="28"
+            width="52"
+            height="16"
+            fill="none"
+            stroke="var(--text-dim)"
+            stroke-width="1.2"
+          />
+          <line
+            x1="136"
+            y1="12"
+            x2="166"
+            y2="24"
+            stroke="var(--text-dim)"
+            stroke-width="1.2"
+            stroke-dasharray="3 3"
+          />
+          <line
+            x1="136"
+            y1="36"
+            x2="166"
+            y2="24"
+            stroke="var(--text-dim)"
+            stroke-width="1.2"
+            stroke-dasharray="3 3"
+          />
+          <rect
+            x="166"
+            y="16"
+            width="52"
+            height="16"
+            fill="none"
+            stroke="var(--accent)"
+            stroke-width="1.6"
+          />
+        </svg> -->
+        <p class="lede">
+          I build the parts nobody notices until they break — message queues,
+          data migrations, and the logic regulated industries depend on to run
+          correctly every time.
+        </p>
+        <div class="cta-row">
+          <a class="btn primary" href="mailto:marcus.slv.tech@gmail.com"
+            >Get in touch</a
+          >
+          <a class="btn" href="https://wa.me/+5584991003440">WhatsApp</a>
+          <a
+            class="btn"
+            href="https://www.linkedin.com/in/marcus-slv/"
+            target="_blank"
+            rel="noopener"
+            >LinkedIn</a
+          >
+          <a
+            class="btn"
+            href="https://github.com/MarcusSilva3298"
+            target="_blank"
+            rel="noopener"
+            >GitHub</a
+          >
+        </div>
+      </header>
+
+      <section class="about">
+        <h2>About</h2>
+        <p>
+          5+ years building backend systems in many areas, including healthcare
+          and oil &amp; gas, mostly in Node.js and TypeScript. I've owned
+          architecture decisions end to end — designing messaging systems from a
+          blank page, leading ORM migrations without downtime, and stabilizing
+          production systems under pressure.
+        </p>
+        <p>
+          Outside of work, I'm usually deep in a game, a book, or a show, and I
+          play both electric and acoustic guitar. My taste in music is pretty
+          eclectic — mostly electronic, metal, and rock, some classical when I
+          need to focus, and a lot of rap at the gym.
+        </p>
+      </section>
+
+      <section class="work">
+        <h2>Selected Work</h2>
+        <div class="case">
+          <h3>Messaging architecture, from zero</h3>
+          <p class="meta">
+            Idus Tecnologia — Industrial alarm monitoring, oil &amp; gas
+          </p>
+          <p>
+            The project had a microservices plan but no way for those services
+            to talk to each other. I designed and built the RabbitMQ messaging
+            layer from scratch — the async communication patterns the whole
+            system still runs on today.
+          </p>
+          <div class="tags">
+            <span class="tag">RabbitMQ</span><span class="tag">NestJS</span
+            ><span class="tag">Microservices</span>
+          </div>
+        </div>
+        <div class="case">
+          <h3>Migrating the data layer without stopping the line</h3>
+          <p class="meta">Idus Tecnologia — Backend infrastructure</p>
+          <p>
+            Prisma couldn't handle the complex relational queries the product
+            needed. I researched alternatives, proposed TypeORM, and led the
+            migration across the entire codebase — with zero production
+            downtime.
+          </p>
+          <div class="tags">
+            <span class="tag">TypeORM</span><span class="tag">Prisma</span
+            ><span class="tag">PostgreSQL</span>
+          </div>
+        </div>
+        <div class="case">
+          <h3>Owning a compliance platform, start to finish</h3>
+          <p class="meta">WEEDO.it — Healthcare auditing</p>
+          <p>
+            As the sole developer on a compliance auditing platform for health
+            insurance providers, I built access control, dynamic forms, and the
+            reporting pipelines auditors rely on — end to end, with no one else
+            to hand it off to.
+          </p>
+          <div class="tags">
+            <span class="tag">AdonisJS</span><span class="tag">PostgreSQL</span
+            ><span class="tag">Compliance</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="avail">
+        <h2>Available for</h2>
+        <ul>
+          <li>Async processing &amp; message queue architecture</li>
+          <li>Legacy system rescue &amp; stabilization</li>
+          <li>Third-party integrations &amp; APIs</li>
+          <li>Test infrastructure setup</li>
+        </ul>
+      </section>
+
+      <section class="stack">
+        <h2>Stack</h2>
+        <div class="stack-row">
+          <span class="tag">JavaScript</span><span class="tag">TypeScript</span
+          ><span class="tag">Node.js</span><span class="tag">NestJS</span
+          ><span class="tag">AdonisJS</span><span class="tag">Express</span
+          ><span class="tag">RabbitMQ</span><span class="tag">PostgreSQL</span
+          ><span class="tag">MySQL</span><span class="tag">MariaDB</span
+          ><span class="tag">MongoDB</span><span class="tag">Redis</span
+          ><span class="tag">TypeORM</span><span class="tag">Prisma</span
+          ><span class="tag">Jest</span><span class="tag">Docker</span
+          ><span class="tag">GraphQL</span><span class="tag">AWS Lambda</span
+          ><span class="tag">S3</span><span class="tag">CDN</span>
+        </div>
+      </section>
+
+      <footer>
+        <div class="line">Based in Natal, Brazil — working remote.</div>
+        <div class="line">
+          Open to select freelance engagements and remote backend roles.
+        </div>
+        <div class="line">
+          <a href="mailto:marcus.slv.tech@gmail.com"
+            >marcus.slv.tech@gmail.com</a
+          >
+          ·
+          <a href="https://wa.me/+5584991003440">whatsapp</a>
+          ·
+          <a
+            href="https://www.linkedin.com/in/marcus-slv/"
+            target="_blank"
+            rel="noopener"
+            >LinkedIn</a
+          >
+          ·
+          <a
+            href="https://github.com/MarcusSilva3298"
+            target="_blank"
+            rel="noopener"
+            >GitHub</a
+          >
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
